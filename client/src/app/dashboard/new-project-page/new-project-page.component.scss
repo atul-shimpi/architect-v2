@@ -1,0 +1,148 @@
+@import "../../../scss/variables";
+
+new-project-page {
+  display: block;
+  height: 100%;
+  background-color: $site-bg-color-200;
+  
+  .content  {
+    height: calc(100% - 70px);
+    overflow: auto;
+
+    > .container {
+      display: flex;
+      margin-top: 60px;
+
+      @media only screen and (max-width: $tablet) {
+        display: block;
+      }
+    }
+
+    .ad-host-top {
+      margin-top: 60px;
+    }
+
+    .ad-host-bottom {
+      margin-bottom: 60px;
+    }
+  }
+
+  .sidebar {
+    width: 260px;
+    height: 100%;
+    flex: 0 0 260px;
+    margin-right: 35px;
+
+    > .blank-page-button {
+      width: 100%;
+      line-height: 46px;
+    }
+
+    > .panel {
+      background-color: $site-bg-color-100;
+      box-shadow: $box-shadow-2;
+      margin-top: 15px;
+
+      .panel-header {
+        padding: 15px;
+        border-bottom: 1px solid $site-border-color-200;
+        font-weight: 500;
+      }
+    }
+
+    .colors {
+      padding: 5px 5px 0;
+
+      > .color {
+        display: inline-block;
+        width: 33px;
+        height: 33px;
+        margin: 6px;
+        border: 3px solid transparent;
+        cursor: pointer;
+        position: relative;
+
+        > svg {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+
+        &.empty-color {
+          border-color: $site-border-color-200
+        }
+
+        &.active {
+          border-color: $site-accent-color;
+        }
+      }
+    }
+
+    .categories {
+      padding: 0;
+
+      > .category {
+        border-bottom: 1px solid $site-border-color-200;
+        cursor: pointer;
+
+        &.active {
+          background-color: $site-accent-color;
+          color: #fff;
+        }
+      }
+    }
+
+    @media only screen and (max-width: $tablet) {
+      height: auto;
+      width: 100%;
+      margin-bottom: 15px;
+
+      > .panel {
+        display: none;
+      }
+    }
+  }
+
+  .templates {
+    flex: 1 1 auto;
+    width: 100%;
+
+    .grid-container {
+      display: flex;
+      flex-wrap: wrap;
+      padding-bottom: 60px;
+      margin: 0 -7px;
+    }
+
+    .template {
+      flex: 0 0 100%;
+      background-color: $site-bg-color-100;
+      box-shadow: $box-shadow-2;
+      margin: 0;
+      max-height: 275px;
+      cursor: pointer;
+      transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+
+      @media only screen and (min-width: $tablet) {
+        flex: 0 0 auto;
+        width: calc(33.33% - 14px);
+        margin: 0 7px 14px;
+      }
+
+      &:hover {
+        box-shadow: $box-shadow-4;
+      }
+
+      > img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      > figcaption {
+        padding: 10px;
+        text-align: center;
+      }
+    }
+  }
+}

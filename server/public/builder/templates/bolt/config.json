@@ -1,0 +1,10 @@
+{
+    "name": "Bolt",
+    "color": "green",
+    "framework": "bootstrap-3",
+    "category": "Portfolio",
+    "theme": "Paper",
+    "libraries": [
+        "chart"
+    ]
+}

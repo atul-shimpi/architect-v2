@@ -1,0 +1,17 @@
+<div class="spacing top-spacing"></div>
+<div class="spacing left-spacing"></div>
+<div class="spacing right-spacing"></div>
+<div class="spacing bottom-spacing"></div>
+
+<div class="context-box-toolbar">
+    <button class="no-style action-button edit-button" (click)="editNode()">
+        <svg-icon name="mode-edit"></svg-icon>
+    </button>
+    <div class="element-name context-box-drag-handle">
+        <svg-icon name="drag-handle"></svg-icon>
+        <span class="column-name">{{getDisplayName()}}</span>
+    </div>
+    <button class="no-style action-button delete-button" (click)="deleteNode()">
+        <svg-icon name="close"></svg-icon>
+    </button>
+</div>

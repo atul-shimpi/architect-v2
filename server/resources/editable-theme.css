@@ -1,0 +1,391 @@
+:root {
+	--site-accent-color: #009688;
+	--site-primary-color-100: #1976d2;
+	--site-primary-color-200: #1565c0;
+	--site-bg-color-100: #fff;
+	--site-bg-color-200: #FAFAFA;
+	--site-bg-color-300: #f1f1f1;
+	--site-bg-color-400: #d8d7d7;
+	--site-text-color-100: #fff;
+	--site-text-color-200: rgba(0,0,0,.38);
+	--site-text-color-300: rgba(0,0,0,.54);
+	--site-text-color-400: rgba(0,0,0,.87);
+	--site-border-color-100: #eff1f2;
+	--site-border-color-200: #E0E0E0;
+}
+
+#theme dashboard,
+#theme new-project-page,
+#theme device-switcher .device-description,
+#theme elements-panel .elements-grid > .element:hover,
+#theme background-panel > .buttons > button:hover,
+#theme image-background-panel > .separator,
+#theme image-background-panel .position > .controls > .box,
+#theme border-style-controls > .border-color,
+#theme inspector-panel > .breadcrumbs,
+#theme spacing-panel .side-controls > .side-control,
+#theme text-style-panel .text-decorations, #theme .font-styles button,
+#theme text-style-panel .font-family-container > .google-fonts-button,
+#theme text-style-panel .text-color,
+#theme inspector .mat-expansion-panel.mat-expanded > .mat-expansion-panel-header,
+#theme inspector .mat-expansion-panel:not(.mat-expanded)> .mat-expansion-panel-header:not([aria-disabled=true]):hover,
+#theme inspector > .inspector-nav > .panel-nav > .panel-nav-item:hover:not([disabled]):not(.active),
+#theme layout-panel .rows .row,
+#theme layout-panel .current-columns > .column,
+#theme templates-panel,
+#theme themes-panel,
+#theme code-editor .toolbar,
+#theme link-editor .page-list-item:hover,
+#theme account-settings,
+#theme admin > .content > .content-inner,
+#theme ads-page .panel > .header,
+#theme appearance > .sidebar,
+#theme add-menu-item-panel,
+#theme menus-appearance-panel .mat-expansion-panel > .mat-expansion-panel-content,
+#theme .select-permissions-modal-container .mat-dialog-container,
+#theme .select-plan-modal-container .mat-dialog-container,
+#theme create-subscription-panel .paypal-tab > p,
+#theme user-subscription-page,
+#theme user-subscription-page .card-preview,
+#theme upgrade-page,
+#theme upload-file-modal .upload-panel > .tabs .dropzone,
+#theme text-editor .mce-tinymce .mce-panel
+{
+	background-color: var(--site-bg-color-200);
+}
+
+#theme border-style-controls > .border-color
+{
+	border-color: var(--site-bg-color-200);
+}
+
+#theme dashboard > .header,
+#theme material-navbar
+{
+	background-color: var(--site-primary-color-200);
+}
+
+#theme dashboard > .header,
+#theme select-plan-panel .plans > .plan > .price-box,
+#theme select-plan-period-panel .periods > .radio-button-wrapper > .savings-label,
+#theme material-navbar,
+#theme material-navbar .text-logo,
+#theme material-navbar custom-menu .nav-item .router-link-active, #theme material-navbar custom-menu .nav-item  .active
+{
+	color: var(--site-text-color-100);
+}
+
+#theme dashboard .header-body > .inputs > .input-container > input, #theme dashboard .header-body > .inputs > .input-container  > select,
+#theme dashboard .projects > .project,
+#theme new-project-page .sidebar > .panel,
+#theme new-project-page .templates .template,
+#theme device-switcher,
+#theme attributes-panel .visibility-controls > button.active,
+#theme background-panel > .buttons > button,
+#theme gradient-background-panel,
+#theme image-background-panel,
+#theme shadows-panel .types > .color-button,
+#theme spacing-panel .side-inputs input,
+#theme google-fonts-panel,
+#theme google-fonts-panel > .search > input,
+#theme inspector .mat-expansion-panel.mat-expanded,
+#theme inspector .mat-expansion-panel > .mat-expansion-panel-header,
+#theme inspector .input-container input, #theme inspector .input-container  select, #theme inspector .input-container  textarea,
+#theme inspector > .inspector-nav,
+#theme inspector .content-panel,
+#theme layout-panel .current-columns > .column:hover:not(.dragging),
+#theme settings-panel .input-container > .box > .fake-input,
+#theme templates-panel .templates > .template,
+#theme themes-panel .themes > .theme,
+#theme code-editor,
+#theme drag-visual-helper,
+#theme inline-text-editor,
+#theme link-editor,
+#theme account-settings .content .panel,
+#theme connect-social-accounts-panel .social-login-row > .icon-container.facebook svg-icon,
+#theme select-plan-panel .plans > .plan,
+#theme user-subscription-page .content,
+#theme upgrade-page .step-container
+{
+	background-color: var(--site-bg-color-100);
+}
+
+#theme image-background-panel > .header
+{
+	border-color: var(--site-bg-color-100);
+}
+
+#theme inspector > .inspector-content > .actions
+{
+	background: var(--site-bg-color-100);
+}
+
+#theme connect-social-accounts-panel .social-login-row > .icon-container.twitter,
+#theme connect-social-accounts-panel .social-login-row > .icon-container.google
+{
+	color: var(--site-bg-color-100);
+}
+
+#theme select-plan-period-panel .periods > .radio-button-wrapper > .savings-label:before
+{
+	border-left-color: var(--site-bg-color-100);
+}
+
+#theme dashboard .header-body > .inputs > .input-container > input, #theme dashboard .header-body > .inputs > .input-container  > select,
+#theme attributes-panel .input-container, #theme attributes-panel  .mat-chip-list-wrapper,
+#theme shadows-panel .sliders > .slider-container > .title,
+#theme google-fonts-panel,
+#theme inspector .content-panel,
+#theme layout-panel .add-item-button:hover> span,
+#theme drag-visual-helper,
+#theme .context-menu .context-menu-item,
+#theme mail-templates > .label .type.selected,
+#theme .admin-pill-nav > .nav-item,
+#theme body
+{
+	color: var(--site-text-color-400);
+}
+
+#theme dashboard .projects > .project > .footer,
+#theme spacing-panel .side-controls > .side-control.all-control.active,
+#theme publish-project-modal .project-url,
+#theme mail-template-preview .email-inbox > .toolbar > .user > .meta > .info > svg-icon,
+#theme settings .widget.widget-flat,
+#theme create-subscription-panel .paypal-tab > p
+{
+	border-color: var(--site-border-color-100);
+}
+
+#theme spacing-panel .side-controls > .side-control.top-control.active
+{
+	border-top-color: var(--site-border-color-100);
+}
+
+#theme spacing-panel .side-controls > .side-control.right-control.active
+{
+	border-right-color: var(--site-border-color-100);
+}
+
+#theme spacing-panel .side-controls > .side-control.bottom-control.active
+{
+	border-bottom-color: var(--site-border-color-100);
+}
+
+#theme spacing-panel .side-controls > .side-control.left-control.active
+{
+	border-left-color: var(--site-border-color-100);
+}
+
+#theme dashboard .projects > .project > .footer .updated,
+#theme elements-panel .elements-grid > .element > svg-icon,
+#theme image-background-panel .image-properties,
+#theme inspector > .inspector-nav,
+#theme inspector > .inspector-content,
+#theme layout-panel .mat-action-row, #theme .row-actions > button,
+#theme layout-panel .add-item-button > span,
+#theme pages-panel .active-page-actions,
+#theme settings-panel .setting-container > p,
+#theme .context-menu .context-menu-item > svg-icon,
+#theme .context-menu .context-menu-item > .alt-text,
+#theme account-settings .content .panel .avatar-input > .avatar-actions-container > .info,
+#theme menu-items > .inner > .no-menu-items,
+#theme crupdate-group-modal .setting-container > p,
+#theme mail-templates > .label .type,
+#theme settings .settings-panels-container > *:not(router-outlet) > .header,
+#theme select-plan-panel .plans > .plan > .name,
+#theme upgrade-page-aside .secure-shopping .text > .secondary,
+#theme upgrade-page .payment-step .legal-info,
+#theme upload-file-modal .upload-panel > .menu > .menu-item,
+#theme .menu-with-alt-text .mat-menu-item > .alt-text,
+#theme .admin-table-panel .mat-table .mat-column-edit,
+#theme .input-container p,
+#theme .setting-toggle-container > p,
+#theme text-editor .mat-menu .alt-text
+{
+	color: var(--site-text-color-300);
+}
+
+#theme new-project-page .sidebar > .panel .panel-header,
+#theme new-project-page .sidebar .colors > .color.empty-color,
+#theme new-project-page .sidebar .categories > .category,
+#theme elements-panel .elements-grid > .element,
+#theme attributes-panel .visibility-controls > button,
+#theme background-panel > .buttons > button,
+#theme gradient-background-panel > .header,
+#theme gradient-background-panel > .previews > .preview,
+#theme image-background-panel > .textures > .texture,
+#theme image-background-panel .position > .controls > .box,
+#theme inspector-panel > .breadcrumbs,
+#theme shadows-panel .sliders > .slider-container > .inner-container > .input-container > input,
+#theme spacing-panel .side-controls > .side-control,
+#theme spacing-panel .side-controls > .side-control.all-control,
+#theme spacing-panel .side-inputs input,
+#theme google-fonts-panel > .header,
+#theme google-fonts-panel > .search > input,
+#theme text-style-panel .text-decorations, #theme .font-styles button,
+#theme text-style-panel .font-family-container > .google-fonts-button,
+#theme inspector .mat-expansion-panel,
+#theme inspector .input-container input, #theme inspector .input-container  select, #theme inspector .input-container  textarea,
+#theme inspector > .inspector-content > .actions,
+#theme inspector > .inspector-content > .actions > .mat-button,
+#theme layout-panel .mat-action-row, #theme .row-actions > button,
+#theme layout-panel .mat-action-row, #theme .row-actions > button,
+#theme layout-panel .add-item-button:before,
+#theme layout-panel .rows .row,
+#theme layout-panel .current-columns > .column,
+#theme settings-panel .input-container > .box > .fake-input,
+#theme code-editor .editor,
+#theme inline-text-editor > .link-panel,
+#theme inline-text-editor > .icons-panel,
+#theme account-settings .content .panel,
+#theme account-settings .content .panel .panel-header,
+#theme account-settings .content .panel .panel-footer,
+#theme connect-social-accounts-panel .social-login-row,
+#theme admin > .content .flex-table-panel,
+#theme ads-page .panel,
+#theme ads-page .panel > .header,
+#theme analytics .ViewSelector2-item> select,
+#theme analytics .charts-row > .chart-panel,
+#theme analytics .chart-panel-header,
+#theme appearance-panel-meta,
+#theme appearance > .sidebar,
+#theme appearance > .sidebar .back-button,
+#theme appearance > .sidebar .header,
+#theme appearance .nav-item,
+#theme .code-editor-modal-container code-editor-modal .mat-dialog-content .editor,
+#theme appearance-image-input .img-container,
+#theme appearance-list-input,
+#theme add-menu-item-panel > .header,
+#theme add-menu-item-panel .new-item-tabs .items-list > .item,
+#theme menus-appearance-panel .mat-expansion-panel,
+#theme menus-appearance-panel .mat-expansion-panel > .mat-expansion-panel-header.mat-expanded,
+#theme crupdate-plan-modal .plan-features > .title,
+#theme assign-users-to-group-modal .with-addon > .input-addon,
+#theme groups .new-group,
+#theme mail-template-preview .email-inbox > .header,
+#theme mail-template-preview .email-inbox > .toolbar > .actions > .buttons,
+#theme mail-template-preview .email-inbox > .toolbar > .actions > .buttons > .reply,
+#theme mail-templates > .header,
+#theme mail-templates > .header .action,
+#theme mail-templates > .label .type:last-of-type,
+#theme mail-templates > .template.column mail-template-preview,
+#theme mail-templates > .template > .editor,
+#theme mail-templates > .template > mail-template-preview,
+#theme crupdate-page > .slug-container > .back-button,
+#theme permissions-manager-panel .header,
+#theme settings .settings-panels-container > *:not(router-outlet),
+#theme translations > aside .new-localization,
+#theme translations > aside .update-translations,
+#theme user-access-manager .panel-outter > .header,
+#theme user-subscription-page .content .main-section,
+#theme user-subscription-page .card-preview,
+#theme accepted-payments-header,
+#theme order-summary,
+#theme order-summary,
+#theme order-summary .emphasis,
+#theme upgrade-page-aside,
+#theme upgrade-page-aside .secure-shopping,
+#theme upload-file-modal .upload-panel > .tabs .dropzone,
+#theme .admin-pill-nav.solid > .nav-item,
+#theme .admin-table-panel,
+#theme .admin-table-panel .admin-table-panel-header > .header-inner.selected,
+#theme .admin-table-panel .admin-table-panel-header > .header-inner.selected > .right > button,
+#theme .input-container input, #theme .input-container  select, #theme .input-container  textarea, #theme .input-container  .fake-input,
+#theme text-editor,
+#theme text-editor .mce-tinymce .mce-panel,
+#theme text-editor .editor-header > .toolbar-row,
+#theme text-editor .editor-header .actions,
+#theme text-editor .editor-footer
+{
+	border-color: var(--site-border-color-200);
+}
+
+#theme spacing-panel .side-controls > .side-control.top-control
+{
+	border-top-color: var(--site-border-color-200);
+}
+
+#theme spacing-panel .side-controls > .side-control.right-control
+{
+	border-right-color: var(--site-border-color-200);
+}
+
+#theme spacing-panel .side-controls > .side-control.bottom-control
+{
+	border-bottom-color: var(--site-border-color-200);
+}
+
+#theme spacing-panel .side-controls > .side-control.left-control
+{
+	border-left-color: var(--site-border-color-200);
+}
+
+#theme new-project-page .sidebar .colors > .color.active,
+#theme image-background-panel .position > .controls > .box.active,
+#theme layout-panel .rows .row.selected,
+#theme layout-panel .current-columns > .column.selected,
+#theme themes-panel .themes > .theme.active,
+#theme upload-file-modal .upload-panel > .menu > .menu-item.active,
+#theme .admin-pill-nav > .nav-item.selected
+{
+	border-color: var(--site-accent-color);
+}
+
+#theme new-project-page .sidebar .categories > .category.active,
+#theme image-background-panel .position > .controls > .box.active,
+#theme side-control-border .side-control-border-inner.active:before, #theme side-control-border .side-control-border-inner .active:after,
+#theme column-presets > .preset > .col,
+#theme select-plan-panel .plans > .plan > .price-box,
+#theme select-plan-period-panel .periods > .radio-button-wrapper > .savings-label,
+#theme .admin-pill-nav > .nav-item.selected,
+#theme .mat-raised-button.mat-accent:not([disabled]), #theme .mat-fab.mat-accent, #theme .mat-mini-fab.mat-accent,
+#theme .mat-checkbox-checked.mat-accent .mat-checkbox-background, #theme .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background
+{
+	background-color: var(--site-accent-color);
+}
+
+#theme inspector-panel > .breadcrumbs > .crumb-container.last.crumb,
+#theme text-style-panel .text-decorations, #theme .font-styles button.active,
+#theme code-editor .toolbar .active,
+#theme inline-text-editor .controls-group .active,
+#theme appearance-panel-meta > .title > .path .last,
+#theme user-subscription-page .content .check-icon,
+#theme plan-features-list .mat-list .check-icon,
+#theme upload-file-modal .upload-panel > .menu > .menu-item.active,
+#theme text-editor .editor-header .editor-button.success,
+#theme .mat-button.mat-accent, #theme .mat-icon-button.mat-accent
+{
+	color: var(--site-accent-color);
+}
+
+#theme admin > .content > .left-column > .menu-items > .menu-item.router-link-active,
+#theme select-plan-period-panel .periods > .radio-button-wrapper > .savings-label:after
+{
+	border-left-color: var(--site-accent-color);
+}
+
+#theme side-control-border .side-control-border-inner:before, #theme side-control-border .side-control-border-inner :after
+{
+	background-color: var(--site-bg-color-400);
+}
+
+#theme inspector > .inspector-nav > .panel-nav > .panel-nav-item[disabled],
+#theme .context-menu .context-menu-item:disabled,
+#theme .input-container input, #theme select, #theme textarea, #theme .fake-input:disabled
+{
+	color: var(--site-text-color-200);
+}
+
+#theme inspector > .inspector-nav > .panel-nav > .panel-nav-item.active,
+#theme inspector > .inspector-content > .panel-container,
+#theme layout-panel .add-item-button,
+#theme link-editor .page-list-item.selected
+{
+	background-color: var(--site-bg-color-300);
+}
+
+#theme material-navbar custom-menu .nav-item .router-link-active, #theme material-navbar custom-menu .nav-item  .active
+{
+	background-color: var(--site-primary-color-100);
+}
+

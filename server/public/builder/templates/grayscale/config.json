@@ -1,0 +1,10 @@
+{
+    "name": "Grayscale",
+    "color": "black",
+    "category": "Landing Page",
+    "theme": "Yeti",
+    "libraries": [
+        "google-maps",
+        "jquery-easing"
+    ]
+}

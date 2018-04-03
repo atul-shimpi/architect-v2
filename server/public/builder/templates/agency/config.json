@@ -1,0 +1,15 @@
+{
+    "color": "gray",
+    "category": "hello",
+    "framework": "bootstrap-3",
+    "theme": "Yeti",
+    "name": "Agency",
+    "display_name": "Agency",
+    "libraries": [
+        "classy",
+        "animated-header",
+        "bootstrap-validation",
+        "jquery-easing"
+    ],
+    "_method": "PUT"
+}

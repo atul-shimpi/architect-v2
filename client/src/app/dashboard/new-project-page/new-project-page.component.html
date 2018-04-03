@@ -1,0 +1,43 @@
+<material-navbar menuPosition="dashboard"></material-navbar>
+
+<div class="content scroll-container">
+
+    <ad-host [slot]="siteConfig.get().admin.ads[0].slot" class="ad-host-top"></ad-host>
+
+    <div class="container">
+        <aside class="sidebar">
+            <button mat-raised-button color="accent" class="blank-page-button" (click)="openNewProjectModal()" trans>Start with Blank Page</button>
+
+            <div class="panel">
+                <div class="panel-header" trans>Colors</div>
+                <div class="panel-body colors">
+                    <div class="color empty-color" title="none" [class.active]="!selectedColor" (click)="filterByColor(null)">
+                        <svg style="width: 32px; height: 32px;">
+                            <line x1="0" y1="26" x2="26" y2="0" style="stroke:rgb(255,0,0);stroke-width:1"></line>
+                        </svg>
+                    </div>
+                    <div class="color" *ngFor="let color of colors" (click)="filterByColor(color.name)" [class.active]="selectedColor === color.name" [style.background]="color.color" [title]="color.name"></div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header" trans>Categories</div>
+                <mat-list class="panel-body categories">
+                    <mat-list-item class="category" [class.active]="!selectedCategory" (click)="filterByCategory(null)" trans>All Categories</mat-list-item>
+                    <mat-list-item class="category" *ngFor="let category of allCategories" [class.active]="selectedCategory === category" (click)="filterByCategory(category)">{{category}}</mat-list-item>
+                </mat-list>
+            </div>
+        </aside>
+
+        <div class="templates">
+            <div class="grid-container">
+                <figure class="template grid-item" *ngFor="let template of filteredTemplates" (click)="openNewProjectModal(template.name)">
+                    <img [src]="getTemplateThumbnail(template)">
+                    <figcaption>{{template.name}}</figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+
+    <ad-host [slot]="siteConfig.get().admin.ads[1].slot" class="ad-host-bottom"></ad-host>
+</div>

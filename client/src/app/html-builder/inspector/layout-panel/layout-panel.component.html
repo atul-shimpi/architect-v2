@@ -1,0 +1,69 @@
+<mat-accordion class="containers" reorderLayoutItems="container">
+    <button class="no-style add-item-button" (click)="layoutPanel.createContainer(null, 'start')"><span trans>+ ADD CONTAINER</span></button>
+
+    <div class="container-drag-wrapper" [id]="container.id" *ngFor="let container of layoutPanel.containers; index as index">
+        <mat-expansion-panel class="container-panel mat-elevation-z" [expanded]="containerIsSelected(container)" (opened)="onPanelOpen(container)">
+            <mat-expansion-panel-header class="drag-handle" (mouseenter)="repositionHoverBox(container.node)" (mouseleave)="hideHoverBox()">
+                <mat-panel-title class="name">
+                    <span trans>Container</span> <span [innerHtml]="'&nbsp'"></span> <span>{{index + 1}}</span>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="container-config">
+                <div class="rows" reorderLayoutItems="row">
+                    <button class="no-style add-item-button" (click)="layoutPanel.createRow(container.node, container.rows[0], 'start')"><span trans>+ ADD ROW</span></button>
+
+                    <div class="row-drag-wrapper" *ngFor="let row of container.rows; index as index">
+                        <div class="row drag-handle" (click)="layoutPanel.selectRow(row)" [class.selected]="layoutPanel.rowIsSelected(row)" (mouseenter)="repositionHoverBox(row)" (mouseleave)="hideHoverBox()">
+                            <div class="row-name"><span trans>Row</span> {{index + 1}}</div>
+                            <div class="row-actions">
+                                <button class="no-style" matTooltip="Modify" (click)="openInspectorPanel(row)">
+                                    <svg-icon name="brush"></svg-icon>
+                                </button>
+                                <button class="no-style" matTooltip="Clone" (click)="cloneRow(row)">
+                                    <svg-icon name="content-copy"></svg-icon>
+                                </button>
+                                <button class="no-style" matTooltip="Delete" (click)="removeItem(row)">
+                                    <svg-icon name="delete"></svg-icon>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button class="no-style add-item-button" (click)="layoutPanel.createRow(container.node, row, 'after')"><span trans>+ ADD ROW</span></button>
+                    </div>
+                </div>
+
+                <ng-container *ngIf="layoutPanel.selectedRow">
+                    <column-presets [preset]="layoutPanel.selectedRow.preset" (selected)="layoutPanel.applyPreset($event)"></column-presets>
+
+                    <div class="current-columns" reorderLayoutItems="column">
+                        <div class="column column-helper column-drag-wrapper drag-handle"
+                             *ngFor="let column of layoutPanel.selectedRow.columns"
+                             [style.width]="widthFromSpan(column.span)"
+                             (click)="layoutPanel.selectColumn(column.node)"
+                             [id]="column.id"
+                             [class.selected]="isSelected(column.node)"
+                             (mouseenter)="repositionHoverBox(column.node)"
+                             (mouseleave)="hideHoverBox()"
+                        >{{column.span}}</div>
+                    </div>
+                </ng-container>
+            </div>
+
+            <mat-action-row>
+                <button class="no-style" matTooltip="Modify" (click)="openInspectorPanel(container.node)">
+                    <svg-icon name="brush"></svg-icon>
+                </button>
+                <button class="no-style" matTooltip="Clone" (click)="cloneContainer(container)">
+                    <svg-icon name="content-copy"></svg-icon>
+                </button>
+                <button class="no-style" matTooltip="Delete" (click)="removeItem(container.node)">
+                    <svg-icon name="delete"></svg-icon>
+                </button>
+            </mat-action-row>
+        </mat-expansion-panel>
+
+        <button class="no-style add-item-button hide-text" (click)="layoutPanel.createContainer(container.node, 'after')">
+            <span trans>+ ADD CONTAINER</span>
+        </button>
+    </div>
+</mat-accordion>

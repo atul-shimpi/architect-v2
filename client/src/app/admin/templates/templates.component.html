@@ -1,0 +1,86 @@
+<div class="admin-table-panel">
+    <div class="admin-table-panel-header">
+        <div class="header-inner default" *ngIf="dataSource.selectedRows.isEmpty()">
+            <div class="left">
+                <button mat-raised-button color="accent" (click)="showCrupdateTemplateModal()" *ngIf="currentUser.hasPermission('templates.create')" trans>Add</button>
+            </div>
+
+            <div class="right">
+                <div class="input-container">
+                    <input type="text" class="search" placeholder="Search templates" trans-placeholder [formControl]="dataSource.searchQuery">
+                    <svg-icon name="search"></svg-icon>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-inner selected" *ngIf="dataSource.selectedRows.hasValue()">
+            <div class="left">{{dataSource.selectedRows.selected.length}} <span trans>Templates Selected</span></div>
+            <div class="right">
+                <button mat-icon-button matTooltip="Delete selected" (click)="maybeDeleteSelectedTemplates()" *ngIf="currentUser.hasPermission('templates.delete')">
+                    <svg-icon name="delete"></svg-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="select">
+            <mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? dataSource.masterToggle() : null"
+                              [checked]="dataSource.selectedRows.hasValue() && dataSource.isAllSelected()"
+                              [indeterminate]="dataSource.selectedRows.hasValue() && !dataSource.isAllSelected()">
+                </mat-checkbox>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()"
+                              (change)="$event ? dataSource.selectedRows.toggle(row) : null"
+                              [checked]="dataSource.selectedRows.isSelected(row)">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="image">
+            <mat-header-cell *matHeaderCellDef trans>Thumbnail</mat-header-cell>
+            <mat-cell *matCellDef="let template"> <img [src]="getTemplateThumbnail(template)"> </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header trans>Name</mat-header-cell>
+            <mat-cell *matCellDef="let template"> {{template.config.display_name || template.config.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="category">
+            <mat-header-cell *matHeaderCellDef trans>Category</mat-header-cell>
+            <mat-cell *matCellDef="let template"> {{template.config.category}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="color">
+            <mat-header-cell *matHeaderCellDef trans>Color</mat-header-cell>
+            <mat-cell *matCellDef="let template"> {{template.config.color}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="theme">
+            <mat-header-cell *matHeaderCellDef trans>Theme</mat-header-cell>
+            <mat-cell *matCellDef="let template"> {{template.config.theme}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let template">
+                <button mat-icon-button (click)="showCrupdateTemplateModal(template)" *ngIf="currentUser.hasPermission('templates.update')" matTooltip="Edit template">
+                    <svg-icon name="edit"></svg-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="['select', 'image', 'name', 'category', 'color', 'theme', 'edit']"></mat-header-row>
+        <mat-row *matRowDef="let myRowData; columns: ['select', 'image', 'name', 'category', 'color', 'theme', 'edit']"></mat-row>
+    </mat-table>
+
+    <no-results-message *ngIf="dataSource.isEmpty()">
+        <span primary-text trans>Nothing To Display.</span>
+        <span secondary-text trans>Seems like no templates have been created yet.</span>
+    </no-results-message>
+
+    <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+</div>

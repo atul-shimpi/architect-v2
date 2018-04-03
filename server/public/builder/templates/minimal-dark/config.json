@@ -1,0 +1,10 @@
+{
+    "name": "Minimal Dark",
+    "color": "black",
+    "category": "Portfolio",
+    "theme": "default",
+    "libraries": [
+        "chart",
+        "classy"
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "color": "black",
+    "category": "Landing Page",
+    "framework": "bootstrap-4",
+    "theme": "cerulean",
+    "display_name": "resume",
+    "_method": "PUT"
+}

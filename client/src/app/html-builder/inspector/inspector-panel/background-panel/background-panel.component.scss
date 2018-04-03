@@ -1,0 +1,36 @@
+@import "../../../../../scss/variables";
+
+background-panel {
+  display: block;
+
+  > .buttons {
+    display: flex;
+    justify-content: space-between;
+
+    > button {
+      flex: 0 0 31%;
+      width: 31%;
+      height: 70px;
+      background-color: $site-bg-color-100;
+      border-radius: 2px;
+      border: 2px solid $site-border-color-200;
+
+      &:hover {
+        background-color: $site-bg-color-200;
+      }
+
+      > svg-icon {
+        margin: 0 auto;
+        width: 30px;
+        height: 30px;
+      }
+
+      > .name {
+        display: block;
+        text-align: center;
+        margin-top: 5px;
+        font-size: 1.3rem;
+      }
+    }
+  }
+}

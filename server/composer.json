@@ -1,0 +1,74 @@
+{
+  "name": "laravel/laravel",
+  "description": "The Laravel Framework.",
+  "keywords": [
+    "framework",
+    "laravel"
+  ],
+  "license": "MIT",
+  "type": "project",
+  "require": {
+    "php": ">=5.6.4",
+    "chumper/zipper": "^1.0",
+    "doctrine/dbal": "^2.5",
+    "fideloper/proxy": "^3.3",
+    "fzaninotto/faker": "~1.4",
+    "guzzlehttp/guzzle": "^6.3",
+    "imagine/imagine": "^0.7.1",
+    "laravel/framework": "5.4.*",
+    "laravel/socialite": "^3.0",
+    "laravel/tinker": "~1.0",
+    "omnipay/paypal": "^2.6",
+    "omnipay/stripe": "^2.4",
+    "pda/pheanstalk": "^3.1",
+    "sentry/sentry-laravel": "^0.8.0",
+    "symfony/event-dispatcher": "^2.8",
+    "vebto-server": "dev-master"
+  },
+  "require-dev": {
+    "mockery/mockery": "0.9.*",
+    "phpunit/phpunit": "~5.7",
+    "barryvdh/laravel-ide-helper": "^2.4",
+    "barryvdh/laravel-debugbar": "~2.4"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@bitbucket.org:vebtolabs/vebto-server.git"
+    }
+  ],
+  "autoload": {
+    "classmap": [
+      "database"
+    ],
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "post-root-package-install": [
+      "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ],
+    "post-create-project-cmd": [
+      "php artisan key:generate"
+    ],
+    "post-install-cmd": [
+      "Illuminate\\Foundation\\ComposerScripts::postInstall",
+      "php artisan optimize"
+    ],
+    "post-update-cmd": [
+      "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+      "php artisan optimize"
+    ]
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "/secure": {
+    "target": "http://localhost/architect3/server",
+    "secure": false
+  },
+  "/storage": {
+    "target": "http://localhost/architect3/server",
+    "secure": false
+  }
+}

@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "scss/_variables";
+@import "~normalize.css";
+@import "scss/material-theme";
+@import "~vebto-client/scss/_variables";
+@import "~vebto-client/scss/global";
+@import "~vebto-client/scss/buttons";
+@import "~vebto-client/scss/input";
+@import "~vebto-client/scss/modal";
+@import "~vebto-client/scss/dropdown";
+@import "~vebto-client/scss/auth-page";
+@import "~vebto-client/scss/perfect-scrollbar-theme";
+@import "scss/container";

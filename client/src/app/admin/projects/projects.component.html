@@ -1,0 +1,96 @@
+<div class="admin-table-panel">
+    <div class="admin-table-panel-header">
+        <div class="header-inner default" *ngIf="dataSource.selectedRows.isEmpty()">
+            <div class="left">
+                <button mat-raised-button color="accent" (click)="showCrupdateProjectModal()" *ngIf="currentUser.hasPermission('projects.create')" trans>Add</button>
+            </div>
+
+            <div class="right">
+                <div class="input-container">
+                    <input type="text" class="search" placeholder="Search projects" trans-placeholder [formControl]="dataSource.searchQuery">
+                    <svg-icon name="search"></svg-icon>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-inner selected" *ngIf="dataSource.selectedRows.hasValue()">
+            <div class="left">{{dataSource.selectedRows.selected.length}} <span trans>Projects Selected</span></div>
+            <div class="right">
+                <button mat-icon-button matTooltip="Delete selected" (click)="maybeDeleteSelectedProjects()" *ngIf="currentUser.hasPermission('projects.delete')">
+                    <svg-icon name="delete"></svg-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="select">
+            <mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? dataSource.masterToggle() : null"
+                              [checked]="dataSource.selectedRows.hasValue() && dataSource.isAllSelected()"
+                              [indeterminate]="dataSource.selectedRows.hasValue() && !dataSource.isAllSelected()">
+                </mat-checkbox>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()"
+                              (change)="$event ? dataSource.selectedRows.toggle(row) : null"
+                              [checked]="dataSource.selectedRows.isSelected(row)">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="image">
+            <mat-header-cell *matHeaderCellDef trans>Thumbnail</mat-header-cell>
+            <mat-cell *matCellDef="let project"> <img [src]="getProjectThumbnail(project)"> </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header trans>Name</mat-header-cell>
+            <mat-cell *matCellDef="let project"> {{project.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="user">
+            <mat-header-cell *matHeaderCellDef trans>User</mat-header-cell>
+            <mat-cell *matCellDef="let project"> {{project.users[0].display_name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="published">
+            <mat-header-cell *matHeaderCellDef mat-sort-header trans>Published</mat-header-cell>
+            <mat-cell *matCellDef="let project"> {{project.published ? 'Yes' : 'No'}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="template">
+            <mat-header-cell *matHeaderCellDef trans>Template</mat-header-cell>
+            <mat-cell *matCellDef="let project"> {{project.template}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="framework">
+            <mat-header-cell *matHeaderCellDef trans>Framework</mat-header-cell>
+            <mat-cell *matCellDef="let project"> {{project.framework}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="created_at">
+            <mat-header-cell *matHeaderCellDef trans>Created At</mat-header-cell>
+            <mat-cell *matCellDef="let project"> {{project.created_at | formattedDate}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let project">
+                <button mat-icon-button (click)="showCrupdateProjectModal(project)" *ngIf="currentUser.hasPermission('projects.update')" matTooltip="Edit project">
+                    <svg-icon name="edit"></svg-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="['select', 'image', 'name', 'user', 'published', 'template', 'framework', 'created_at', 'edit']"></mat-header-row>
+        <mat-row *matRowDef="let myRowData; columns: ['select', 'image', 'name', 'user', 'published', 'template', 'framework', 'created_at', 'edit']"></mat-row>
+    </mat-table>
+
+    <no-results-message *ngIf="dataSource.isEmpty()">
+        <span primary-text trans>Nothing To Display.</span>
+        <span secondary-text trans>Seems like no projects have been created yet.</span>
+    </no-results-message>
+
+    <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+</div>

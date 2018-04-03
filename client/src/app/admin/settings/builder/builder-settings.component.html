@@ -1,0 +1,46 @@
+<div class="header">
+    <div class="title" trans>Site Builder</div>
+    <div class="subtitle" trans>Configure the site builder and user dashboard settings.</div>
+</div>
+
+<form class="body many-inputs" (submit)="saveSettings()" ngNativeValidate>
+    <div class="input-container">
+        <label for="builder.routing_type" trans>User Site Url Type</label>
+        <select name="builder.routing_type" id="builder.routing_type" [(ngModel)]="state.client['builder.routing_type']">
+            <option value="none">None</option>
+            <option value="subdomain">Subdomain</option>
+            <option value="regular">Regular</option>
+        </select>
+        <p>
+            <span trans>Via what url user created sites should be accessible. </span>
+            <span *ngIf="state.client['builder.routing_type'] === 'none'" trans>None: User sites will not be accessible at all.</span>
+            <span *ngIf="state.client['builder.routing_type'] === 'subdomain'" trans>Subdomain: https://project-name.your-site.com</span>
+            <span *ngIf="state.client['builder.routing_type'] === 'regular'" trans>Regular: https://your-site.com/sites/project-name</span>
+        </p>
+    </div>
+
+    <div class="input-container">
+        <label for="builder.google_fonts_api_key">Google Fonts API Key</label>
+        <input name="builder.google_fonts_api_key" id="builder.google_fonts_api_key" type="text" required [(ngModel)]="state.client['builder.google_fonts_api_key']">
+    </div>
+
+    <mat-chip-list #chipList class="input-container">
+        <label for="builder.template_categories" trans>Template Categories</label>
+        <input placeholder="+New Category..."
+               trans-placeholder
+               id="builder.template_categories"
+               [matChipInputFor]="chipList"
+               [matChipInputAddOnBlur]="true"
+               (matChipInputTokenEnd)="addCategory($event.value); $event.input.value = ''" />
+        <div class="chips-container">
+            <mat-chip (remove)="removeCategory(card)" [removable]="true" *ngFor="let category of categories">
+                {{category}}
+                <svg-icon name="cancel" matChipRemove></svg-icon>
+            </mat-chip>
+        </div>
+    </mat-chip-list>
+
+    <button mat-raised-button color="accent" class="button primary update-button" type="submit" trans>Update</button>
+</form>
+
+<loading-indicator [isVisible]="loading" class="overlay"></loading-indicator>

@@ -1,0 +1,11 @@
+{
+    "name": "Squad",
+    "color": "White",
+    "category": "Portfolio",
+    "theme": "Yeti",
+    "libraries": [
+        "jquery-easing",
+        "scroll-to",
+        "wow"
+    ]
+}

@@ -1,0 +1,79 @@
+<div class="header">
+    <material-navbar menuPosition="dashboard"></material-navbar>
+
+    <div class="header-body container">
+        <form class="inputs" [formGroup]="models">
+            <div class="input-container">
+                <label for="search-query" trans>Search</label>
+                <input type="search" formControlName="query" id="search-query">
+            </div>
+
+            <div class="input-container">
+                <label for="project-status" trans>Status</label>
+                <select formControlName="published" id="project-status">
+                    <option value="all" trans>All</option>
+                    <option [value]="1" trans>Published</option>
+                    <option [value]="0" trans>Unpublished</option>
+                </select>
+            </div>
+
+            <div class="input-container">
+                <label for="project-order" trans>Sort</label>
+                <select formControlName="order" id="project-order">
+                    <option value="created_at|desc" trans>Newest</option>
+                    <option value="created_at|asc" trans>Oldest</option>
+                    <option value="name|desc" trans>A-Z</option>
+                    <option value="name|asc" trans>Z-A</option>
+                </select>
+            </div>
+        </form>
+
+        <div class="actions">
+            <ng-container *ngIf="settings.get('billing.enable')">
+                <a class="upgrade-button" mat-raised-button color="accent" routerLink="/billing/subscription" *ngIf="currentUser.isSubscribed()">
+                    <svg-icon name="flash-on"></svg-icon>
+                    <span trans>Manage Subscription</span>
+                </a>
+                <a class="upgrade-button" mat-raised-button color="accent" routerLink="/billing/upgrade" *ngIf="!currentUser.isSubscribed()">
+                    <svg-icon name="flash-on"></svg-icon>
+                    <span trans>Upgrade to Premium</span>
+                </a>
+            </ng-container>
+            <a class="new-project-button" mat-raised-button color="accent" routerLink="/dashboard/projects/new" trans>New Project</a>
+        </div>
+    </div>
+</div>
+
+<div class="scroll-container">
+    <ad-host [slot]="siteConfig.get().admin.ads[0].slot" class="ad-host-top"></ad-host>
+
+    <div class="projects container">
+        <div class="project" *ngFor="let project of projects">
+            <div class="header">
+                <a [href]="getProjectUrl(project)" target="_blank" trans>View Site</a>
+            </div>
+            <img [src]="getProjectImage(project)" (click)="openBuilder(project)">
+            <div class="footer">
+                <div class="title">
+                    <div class="name">{{project.name}}</div>
+                    <div class="updated">{{project.created_at | formattedDate}}</div>
+                </div>
+                <div class="actions">
+                    <button mat-icon-button color="accent" (click)="openBuilder(project)" matTooltip="Open in builder"><svg-icon name="brush"></svg-icon></button>
+                    <button mat-icon-button color="accent" [disabled]="!currentUser.hasPermission('projects.publish')" (click)="openPublishProjectModal(project)" matTooltip="Publish">
+                        <svg-icon name="publish"></svg-icon>
+                    </button>
+                    <button mat-icon-button color="accent" (click)="deleteProjectWithConfirmation(project)" matTooltip="Delete"><svg-icon name="delete"></svg-icon></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <no-results-message *ngIf="!projects.length">
+        <span primary-text *ngIf="models.controls.query.value" trans>Not matching projects found.</span>
+        <span primary-text *ngIf="!models.controls.query.value" trans>You have not created any projects yet.</span>
+        <span secondary-text *ngIf="!models.controls.query.value" trans>Nothing to show. <a routerLink="/dashboard/projects/new">Create a project?</a></span>
+    </no-results-message>
+
+    <ad-host [slot]="siteConfig.get().admin.ads[1].slot" class="ad-host-bottom"></ad-host>
+</div>

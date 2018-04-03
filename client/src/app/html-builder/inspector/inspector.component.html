@@ -1,0 +1,64 @@
+<nav class="inspector-nav mat-elevation-z3">
+    <a class="back-button" matTooltip="Dashboard" routerLink="/dashboard">
+        <svg-icon name="keyboard-arrow-left"></svg-icon>
+    </a>
+
+    <div class="panel-nav">
+        <button mat-button class="panel-nav-item" [class.active]="inspector.activePanelIs('layout')" (click)="inspector.togglePanel('layout')">
+            <svg-icon name="web-design-custom"></svg-icon>
+            <span class="name" trans>Layout</span>
+        </button>
+        <button mat-button class="panel-nav-item" [class.active]="inspector.activePanelIs('elements')" (click)="inspector.togglePanel('elements')">
+            <svg-icon name="puzzle-custom"></svg-icon>
+            <span class="name" trans>Elements</span>
+        </button>
+        <button mat-button class="panel-nav-item" [class.active]="inspector.activePanelIs('inspector')" (click)="inspector.togglePanel('inspector')">
+            <svg-icon name="brush-custom"></svg-icon>
+            <span class="name" trans>Inspector</span>
+        </button>
+        <button mat-button class="panel-nav-item" [class.active]="inspector.activePanelIs('pages')" (click)="inspector.togglePanel('pages')">
+            <svg-icon name="documents-custom"></svg-icon>
+            <span class="name" trans>Pages</span>
+        </button>
+        <button mat-button class="panel-nav-item" [class.active]="inspector.activePanelIs('settings')" (click)="inspector.togglePanel('settings')">
+            <svg-icon name="settings-custom"></svg-icon>
+            <span class="name" trans>Settings</span>
+        </button>
+        <button mat-button class="panel-nav-item" (click)="toggleCodeEditor()" [disabled]="!currentUser.hasPermission('editors.enable')">
+            <svg-icon name="source-code-custom"></svg-icon>
+            <span class="name" trans>Code Edtr</span>
+        </button>
+    </div>
+
+    <div class="panel-nav undo-nav">
+        <button class="panel-nav-item" mat-button [disabled]="!undoManager.canUndo()" (click)="undoManager.undo()">
+            <svg-icon name="undo"></svg-icon>
+            <span class="name" trans>Undo</span>
+        </button>
+        <button class="panel-nav-item" mat-button [disabled]="!undoManager.canRedo()" (click)="undoManager.redo()">
+            <svg-icon name="redo"></svg-icon>
+            <span class="name" trans>Redo</span>
+        </button>
+    </div>
+</nav>
+
+<div class="inspector-content">
+    <div class="panel-container" customScrollbar>
+        <elements-panel [class.hidden]="!inspector.activePanelIs('elements')"></elements-panel>
+        <inspector-panel [class.hidden]="!inspector.activePanelIs('inspector')"></inspector-panel>
+        <layout-panel [class.hidden]="!inspector.activePanelIs('layout')"></layout-panel>
+        <pages-panel [class.hidden]="!inspector.activePanelIs('pages')"></pages-panel>
+        <settings-panel [class.hidden]="!inspector.activePanelIs('settings')"></settings-panel>
+    </div>
+
+    <device-switcher #deviceSwitcher></device-switcher>
+
+    <div class="actions">
+        <mat-progress-bar mode="indeterminate" *ngIf="activeProject.saving" color="accent"></mat-progress-bar>
+        <button (click)="openPreview()" [disabled]="activeProject.saving" mat-button matTooltip="Preview"><svg-icon name="visibility"></svg-icon></button>
+        <button (click)="downloadProject()" [disabled]="!currentUser.hasPermission('projects.download')" mat-button matTooltip="Download"><svg-icon name="file-download"></svg-icon></button>
+        <button (click)="openPublishProjectModal()" [disabled]="!currentUser.hasPermission('projects.publish')" mat-button matTooltip="Publish"><svg-icon name="publish"></svg-icon></button>
+        <button (click)="toggleDeviceSwitcher()" mat-button matTooltip="Change device"><svg-icon name="phone-android"></svg-icon></button>
+        <button (click)="saveProject()" [disabled]="activeProject.saving" mat-button matTooltip="Save project"><svg-icon name="save"></svg-icon></button>
+    </div>
+</div>

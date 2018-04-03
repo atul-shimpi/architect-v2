@@ -1,0 +1,11 @@
+{
+    "name": "Developer",
+    "color": "white",
+    "category": "Landing Page",
+    "theme": "Yeti",
+    "libraries": [
+        "jquery-rss",
+        "mustache",
+        "github-activity"
+    ]
+}

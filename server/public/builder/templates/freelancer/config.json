@@ -1,0 +1,12 @@
+{
+    "name": "Freelancer",
+    "color": "green",
+    "category": "Portfolio",
+    "theme": "Flatly",
+    "libraries": [
+        "classy",
+        "animated-header",
+        "jquery-easing",
+        "bootstrap-validation"
+    ]
+}

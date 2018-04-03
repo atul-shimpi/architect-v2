@@ -1,0 +1,51 @@
+<div class="modal-header">
+    <h2 class="modal-title" mat-dialog-title *ngIf="updating" trans>Update Project Details</h2>
+    <h2 class="modal-title" mat-dialog-title *ngIf="!updating" trans>Create a New Project</h2>
+    <button type="button" (click)="close()" class="close-button no-style icon-button"><svg-icon name="close"></svg-icon></button>
+</div>
+
+<form autocomplete="off" (ngSubmit)="confirm()" ngNativeValidate>
+    <div class="many-inputs mat-dialog-content" mat-dialog-content>
+        <div class="input-container">
+            <label for="name" trans>Name</label>
+            <input type="text" id="name" name="name" [(ngModel)]="model.name" required>
+            <div class="error" *ngIf="errors.name">{{errors.name}}</div>
+        </div>
+
+        <div class="input-container">
+            <label for="published" trans>Published</label>
+            <select id="published" name="published" [(ngModel)]="model.published">
+                <option [value]="1" trans>Yes</option>
+                <option [value]="0" trans>No</option>
+            </select>
+            <div class="error" *ngIf="errors.published">{{errors.published}}</div>
+        </div>
+
+        <div class="input-container">
+            <label for="framework" trans>Framework</label>
+            <select id="framework" name="framework" [(ngModel)]="model.framework">
+                <option value="" trans>None</option>
+                <option value="bootstrap-3" trans>Bootstrap 3</option>
+                <option value="bootstrap-4" trans>Bootstrap 4</option>
+            </select>
+            <div class="error" *ngIf="errors.framework">{{errors.framework}}</div>
+        </div>
+
+        <div class="input-container">
+            <label for="theme" trans>Theme</label>
+            <select id="theme" name="theme" [(ngModel)]="model.theme">
+                <option value="" trans>None</option>
+                <option [value]="theme.name" *ngFor="let theme of themes">{{theme.name}}</option>
+            </select>
+            <div class="error" *ngIf="errors.theme">{{errors.theme}}</div>
+        </div>
+    </div>
+
+    <div class="buttons right mat-dialog-actions" mat-dialog-actions>
+        <button (click)="close()" type="button" mat-button class="button cancel" trans>Cancel</button>
+        <button type="submit" class="button primary" mat-raised-button color="accent" [disabled]="loading">
+            <span *ngIf="updating" trans>Update Project</span>
+            <span *ngIf="!updating" trans>Create Project</span>
+        </button>
+    </div>
+</form>

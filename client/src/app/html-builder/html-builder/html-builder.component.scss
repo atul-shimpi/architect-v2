@@ -1,0 +1,22 @@
+@import "../../../scss/variables";
+
+html-builder {
+  display: flex;
+  height: 100%;
+  width: 100%;
+
+  > inspector {
+    flex: 0 0 $inspector-width;
+    width: $inspector-width;
+    height: 100%;
+  }
+
+  > mat-drawer-container {
+    flex: 1 1 auto;
+    height: 100%;
+  }
+
+  loading-indicator.overlay {
+    background-color: $site-bg-color-100;
+  }
+}

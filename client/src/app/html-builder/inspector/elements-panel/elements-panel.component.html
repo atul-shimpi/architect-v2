@@ -1,0 +1,16 @@
+<section class="categories" dragElements>
+   <mat-accordion>
+       <mat-expansion-panel class="category mat-elevation-z" *ngFor="let category of categories; index as index;">
+           <mat-expansion-panel-header>
+               <mat-panel-title>{{category}}</mat-panel-title>
+           </mat-expansion-panel-header>
+
+           <div class="elements-grid">
+               <div class="element element-drag-handle" *ngFor="let element of getElementsForCategory(category)" [attr.data-name]="element.name">
+                   <svg-icon [name]="element.icon"></svg-icon>
+                   <div class="name">{{element.name}}</div>
+               </div>
+           </div>
+       </mat-expansion-panel>
+   </mat-accordion>
+</section>

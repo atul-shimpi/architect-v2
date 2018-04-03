@@ -1,0 +1,147 @@
+@import "../../scss/variables";
+
+dashboard {
+  display: block;
+  height: 100%;
+  background-color: $site-bg-color-200;
+
+  > .header {
+    background-color: $site-primary-color-200;
+    color: $site-text-color-100;
+
+    material-navbar {
+      background-color: transparent;
+    }
+  }
+
+  .header-body {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    align-items: center;
+
+    > .inputs {
+      display: flex;
+      align-items: center;
+
+      > .input-container {
+        margin-right: 20px;
+
+        > input, > select {
+          background-color: $site-bg-color-100;
+          color: $site-text-color-400;
+          border-radius: 2px;
+        }
+      }
+    }
+
+    > .actions {
+      margin-left: auto;
+
+      > .upgrade-button {
+        margin-right: 20px;
+      }
+    }
+
+    @media only screen and (max-width: $tablet) {
+      padding: 25px 0;
+
+      > .inputs {
+        display: none;
+      }
+
+      > .new-project-button {
+        width: 100%;
+        line-height: 45px;
+        margin: 0 20px;
+      }
+
+      > .actions {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .scroll-container {
+    height: calc(100% - 233px);
+  }
+
+  .ad-host-top {
+    margin-top: 35px;
+  }
+
+  .ad-host-bottom {
+    margin-bottom: 35px;
+  }
+
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 35px;
+    padding-bottom: 35px;
+
+    > .project {
+      height: 266px;
+      flex: 0 0 100%;
+      margin-bottom: 14px;
+      box-shadow: $box-shadow-1;
+      cursor: pointer;
+      overflow: hidden;
+      background-color: $site-bg-color-100;
+      transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+
+      @media only screen and (min-width: $tablet) {
+        flex: 0 0 auto;
+        width: calc(33.33% - 14px);
+        margin: 0 7px 14px;
+      }
+
+      @media only screen and (min-width: $laptop) {
+        flex: 0 0 auto;
+        width: calc(25% - 14px);
+        margin: 0 7px 14px;
+      }
+
+      &:hover {
+        box-shadow: $box-shadow-3;
+      }
+
+      > .header {
+        padding: 10px;
+
+        > a:hover {
+          text-decoration: underline;
+        }
+      }
+
+      > img {
+        display: block;
+        width: 100%;
+        height: 165px;
+        object-fit: cover;
+      }
+
+      > .footer {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-top: 1px solid $site-border-color-100;
+
+        .name {
+          font-size: 1.6rem;
+          font-weight: bold;
+          margin-bottom: 2px;
+        }
+
+        .updated {
+          font-size: 1rem;
+          color: $site-text-color-300;
+        }
+
+        .actions {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+}
